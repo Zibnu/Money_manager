@@ -270,7 +270,7 @@ function editTransaction(transactionId) {
 
     if(findTransaction) {
         document.getElementById("transactionFormTitleInput").value = findTransaction.title;
-        document.getElementById("transactionFormAmountInput").value = findTransaction.amount;
+        document.getElementById("transactionFormAmountInput").value = Intl.NumberFormat("id-ID").format(findTransaction.amount);
         document.getElementById("transactionFormDateInput").value = findTransaction.date;
         document.getElementById("transactionFormTypeSelect").value = findTransaction.type;
 
