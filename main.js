@@ -100,7 +100,7 @@ function updateTransactionList() {
         buttonDeleteElement.classList.add("tracker-transaction-item__btn");
 
         titleElement.innerText = transaction.title;
-        amountElement.innerText = `Nominal: Rp${transaction.amount}`;
+        amountElement.innerText = `Nominal: Rp${transaction.amount.toLocaleString("id-id")}`;
         dateTimeElement.innerText = `Tanggal: ${transaction.date}`;
         typeTransactionElement.innerText = `Tipe: ${transaction.type === "income" ? "Pemasukan" : "Pengeluaran"}`;
         buttonEditTypeElement.innerText = "Ubah Tipe";
@@ -203,9 +203,9 @@ function updatePanelDashboard() {
 
     const saldo = totalIncome - totalExpense;
 
-    amountCountElement.innerText = `Rp${saldo}`;
-    incomeElement.innerText = `Rp${totalIncome}`;
-    expenseElement.innerText = `Rp${totalExpense}`;
+    amountCountElement.innerText = `Rp${saldo.toLocaleString("id-ID")}`;
+    incomeElement.innerText = `Rp${totalIncome.toLocaleString("id-ID")}`;
+    expenseElement.innerText = `Rp${totalExpense.toLocaleString("id-ID")}`;
 }
 
 /**
