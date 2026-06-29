@@ -132,7 +132,7 @@ transactionFormElement.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const inputTitle = document.getElementById("transactionFormTitleInput").value;
-    const inputAmount = document.getElementById("transactionFormAmountInput").value;
+    const inputAmount = document.getElementById("transactionFormAmountInput").value.replace(/[^0-9]/g, '');
     const inputDate = document.getElementById("transactionFormDateInput").value;
     const selectedType = document.getElementById("transactionFormTypeSelect").value;
 
@@ -166,6 +166,17 @@ transactionFormElement.addEventListener("submit", (e) => {
     
     transactionFormElement.reset();
     document.dispatchEvent(new Event(RENDER_EVENT));
+})
+
+const inputAmountElement = document.getElementById("transactionFormAmountInput");
+inputAmountElement.addEventListener("input", () => {
+    const inputAmountNum = inputAmountElement.value.replace(/[^0-9]/g, '');
+    if(inputAmountNum === "") {
+        inputAmountElement.value = "";
+        return;
+    }
+    const formatRupiah = Intl.NumberFormat("id-ID").format(inputAmountNum);
+    inputAmountElement.value = formatRupiah;
 })
 
 /**
